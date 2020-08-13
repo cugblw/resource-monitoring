@@ -26,7 +26,7 @@
       </el-main>
     </el-container>
     <!-- 底栏 -->
-    <el-footer height="30px">&copy;系统资源监控 @Weil Lee 2020</el-footer>
+    <el-footer height="30px">Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer>
   </div>
 </template>
 
@@ -48,7 +48,6 @@
   .el-menu {
     border: 0px;
   }
-
 
   .el-header {
     background-color: #323232;

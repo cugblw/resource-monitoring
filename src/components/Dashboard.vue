@@ -25,10 +25,16 @@
     </el-row>
     <!-- 第三列布局 -->
     <el-row type="flex" class="row3">
-      <el-col :span="12">
-        <disk-io> </disk-io>
+      <el-col :span="7">
+        <stack-bar></stack-bar>
       </el-col>
-      <el-col :span="12"></el-col>
+      <el-col :span="5">
+        <disk-io>
+        </disk-io>
+      </el-col>
+      <el-col :span="12">
+
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -39,6 +45,7 @@
   import DiskIO from "./sections/DiskIO";
   import Memory from "./sections/Memory";
   import Processes from "./sections/Processes";
+  import Stack from "./sections/Stack-bar";
 
   export default {
     name: "dashboard",
@@ -47,19 +54,20 @@
       "process": Processes,
       "memory": Memory,
       "network-io": NetworkIO,
-      "disk-io": DiskIO
+      "disk-io": DiskIO,
+      'stack-bar': Stack
     }
   }
 </script>
 
-<style>
+<style scoped>
   .el-row {
     /* height: 100%; */
     display: flex;
   }
 
   .row1 {
-    line-height: 100%;
+    line-height: 30vh;
   }
 
   .row2 {
@@ -67,7 +75,7 @@
   }
 
   .row3 {
-    line-height: 30vh;
+    line-height: 100%;
   }
 
   .el-col {

@@ -13,6 +13,16 @@
         let myCPUChart = this.$echarts.init(document.getElementById("cpu"));
         // 指定图表的配置项和数据
         let option = {
+          title: {
+            text: "CPU使用率",
+            textStyle: {
+              fontSize: 20, // 字体大小
+              color: "white", // 字体颜色
+              margin: 20
+            },
+            left: 10,
+            top: 10
+          },
           tooltip: {
             formatter: '{a} <br/>{b} : {c}%'
           },
@@ -26,6 +36,7 @@
             {
               name: 'CPU使用率',
               type: 'gauge',
+              radius: '80%',
               detail: { formatter: '{value}%' },
               data: [{ value: 10, name: '使用率' }]
             }

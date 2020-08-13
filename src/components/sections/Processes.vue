@@ -21,21 +21,24 @@
               fontSize: 20, // 字体大小
               color: "white", // 字体颜色
               margin: 20
-            }
+            },
+            left: 10,
+            top: 10
           },
           tooltip: {},
-          legend: {
-            data: ["进程"],
-            textStyle: {
-              fontSize: 16, // 字体大小
-              color: "white" // 字体颜色
-            }
-          },
+          // legend: {
+          //   top: 10,
+          //   // data: ["进程"],
+          //   textStyle: {
+          //     fontSize: 16, // 字体大小
+          //     color: "white", // 字体颜色
+          //   }
+          // },
           grid: {
             left: "5%",
             right: "15%",
             bottom: "5%",
-            top: "20%",
+            top: "25%",
             containLabel: true
           },
           xAxis: [
