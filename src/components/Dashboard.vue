@@ -2,37 +2,59 @@
   <div>
     <!-- 第一列栅格布局 -->
     <el-row type="flex" class="row1">
-      <el-col :span="8">
+      <el-col :span="8" class='col1'>
         <cpu-data></cpu-data>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="8" class='col2'>
         <process> </process>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="8" class='col3'>
         <memory> </memory>
       </el-col>
     </el-row>
     <!-- 第二列布局 -->
     <el-row type="flex" class="row2">
-      <el-col :span="6">
-        <network-io></network-io>
+      <el-col :span="6" class='col1'>
+        <span>网络I：</span>
+
+        <!-- <network-io></network-io> -->
+        <el-divider></el-divider>
+        <span>网络o：</span>
+
       </el-col>
-      <el-col :span="6"></el-col>
-      <el-col :span="6">
-        <network-io></network-io>
+      <el-col :span="6" class='col2'>
+        <span>网络O：</span>
+
+        <el-divider></el-divider>
       </el-col>
-      <el-col :span="6"></el-col>
+      <el-col :span="6" class='col3'>
+        <span>网络I：</span>
+
+        <!-- <network-io></network-io> -->
+        <el-divider></el-divider>
+      </el-col>
+      <el-col :span="6" class='col4'>
+        <span>网络O：</span>
+
+        <el-divider></el-divider>
+      </el-col>
     </el-row>
     <!-- 第三列布局 -->
     <el-row type="flex" class="row3">
-      <el-col :span="7">
+      <el-col :span="7" class='col1'>
+        <span>磁盘I：</span>
+        <el-divider direction="vertical">
+        </el-divider>
+        <span>磁盘O：</span>
+        <el-divider></el-divider>
+
         <stack-bar></stack-bar>
       </el-col>
-      <el-col :span="5">
+      <el-col :span="5" class='col2'>
         <disk-io>
         </disk-io>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="12" class='col3'>
 
       </el-col>
     </el-row>
@@ -67,21 +89,52 @@
   }
 
   .row1 {
-    line-height: 30vh;
+    line-height: 100%;
   }
 
   .row2 {
-    line-height: 20vh;
+    line-height: 100%;
   }
 
   .row3 {
     line-height: 100%;
   }
 
-  .el-col {
+  .col1 {
     border-radius: 5px;
     margin: 10px;
     background-color: #212529;
     opacity: 0.8;
+  }
+
+  .col2 {
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #212529;
+    opacity: 0.8;
+  }
+
+  .col3 {
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #212529;
+    opacity: 0.8;
+  }
+
+  .col4 {
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #212529;
+    opacity: 0.8;
+  }
+
+  .el-divider--horizontal {
+    margin: 10px 0;
+    background: 0;
+    border-top: 2px dashed #e8eaec;
+  }
+
+  span {
+    color: azure;
   }
 </style>

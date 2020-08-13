@@ -14,7 +14,14 @@
         // 指定图表的配置项和数据
         let option = {
           title: {
-            text: "堆叠区域图"
+            text: "堆叠区域图",
+            textStyle: {
+              fontSize: 20, // 字体大小
+              color: "white", // 字体颜色
+              margin: 20
+            },
+            left: 10,
+            top: 10
           },
           tooltip: {
             trigger: "axis",
@@ -26,7 +33,8 @@
             }
           },
           legend: {
-            data: ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"]
+            data: ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"],
+            textStyle: { color: 'azure' },
           },
           // // toolbox: {
           // //   feature: {
@@ -57,6 +65,12 @@
             bottom: "5%",
             top: "25%",
             containLabel: true
+          },
+          textStyle: {       //  使用全局文本样式，详见TEXTSTYLE
+            // fontWeight: 'bolder',
+            fontSize: 15,
+            // fontStyle: 'italic',
+            color: "white"
           },
           series: [
             {

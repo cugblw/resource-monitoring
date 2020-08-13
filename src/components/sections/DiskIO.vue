@@ -121,7 +121,7 @@
             icon: "circle",
             orient: "vertical",
             right: 10,
-            bottom: 10,
+            bottom: 5,
             show: true,
             data: ['已使用', '空闲', '总共'],
             textStyle: { color: 'azure' },

@@ -86,7 +86,6 @@
                                 color: "#9e0059",
                                 formatter: "{c} G"
                             },
-
                             itemStyle: {
                                 color: "#ffffff"
                             }

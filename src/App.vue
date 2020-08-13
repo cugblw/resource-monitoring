@@ -8,7 +8,8 @@
     <el-container>
       <!-- 侧边导航菜单 -->
       <el-aside width="200px">
-        <el-menu default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+        <el-menu default-active="$route.path" class="el-menu-vertical-demo" :collapse="showMenu"
+          :default-openeds="defaultOpenedsArray" :default-active="activeUrl">
           <el-menu-item index="1">
             <i class="el-icon-s-grid"></i>
             <span slot="title">仪表盘</span>
@@ -26,7 +27,7 @@
       </el-main>
     </el-container>
     <!-- 底栏 -->
-    <el-footer height="30px">Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer>
+    <el-footer height="20px">Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer>
   </div>
 </template>
 
@@ -60,14 +61,14 @@
   }
 
   .el-footer {
-    background-color: #007ACC;
+    background-color: #324759;
     color: azure;
     flex: 1;
     display: flex;
     text-align: right;
     align-items: center;
     justify-content: center;
-
+    font-size: 5;
   }
 
   .el-aside {
