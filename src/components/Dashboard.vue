@@ -55,7 +55,7 @@
         </disk-io>
       </el-col>
       <el-col :span="12" class='col3'>
-
+        <request-data></request-data>
       </el-col>
     </el-row>
   </div>
@@ -68,6 +68,7 @@
   import Memory from "./sections/Memory";
   import Processes from "./sections/Processes";
   import Stack from "./sections/Stack-bar";
+  import RequestData from "./RequestData";
 
   export default {
     name: "dashboard",
@@ -77,7 +78,8 @@
       "memory": Memory,
       "network-io": NetworkIO,
       "disk-io": DiskIO,
-      'stack-bar': Stack
+      'stack-bar': Stack,
+      'request-data': RequestData
     }
   }
 </script>

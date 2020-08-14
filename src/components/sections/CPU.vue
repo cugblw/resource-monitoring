@@ -36,7 +36,7 @@
             {
               name: 'CPU使用率',
               type: 'gauge',
-              radius: '80%',
+              radius: '90%',
               detail: { formatter: '{value}%' },
               data: [{ value: 10, name: '使用率', color: "azure" }],
               title: {               //设置仪表盘中间显示文字样式
