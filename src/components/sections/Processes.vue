@@ -125,6 +125,14 @@
             }
           ]
         };
+
+        setInterval(function () {
+          option.series[0].data[0] = (Math.random() * 100).toFixed(0) - 0;
+          // option.series[0].data[1] = (Math.random() * 100).toFixed(0) - 0;
+          // option.series[0].data[2] = (Math.random() * 100).toFixed(0) - 0;
+          option.series[0].data[9] = (Math.random() * 100).toFixed(0) - 0;
+          myProcessChart.setOption(option, true);
+        }, 2000);
         // 使用刚指定的配置项和数据显示图表。
         myProcessChart.setOption(option);
         window.addEventListener("resize", () => {

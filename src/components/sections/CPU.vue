@@ -54,7 +54,7 @@
         setInterval(function () {
           option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
           myCPUChart.setOption(option, true);
-        }, 2000);
+        }, 1000);
 
         // 使用指定的配置项和数据显示图表。
         myCPUChart.setOption(option);
