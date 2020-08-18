@@ -1,12 +1,19 @@
 <template>
   <div>
-    <div id="cpu" class></div>
+    <div id="cpu"></div>
   </div>
 </template>
 
 <script>
   export default {
     name: "cpu",
+
+
+    props: {
+
+    },
+
+
     methods: {
       drawCPUChart() {
         // 基于准备好的dom，初始化echarts实例

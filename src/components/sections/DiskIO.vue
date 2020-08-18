@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div id="disk" class></div>
+    <div id="diskio" class></div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "disk",
+    name: "diskio",
     methods: {
       drawDiskChart() {
         // 基于准备好的dom，初始化echarts实例
-        let myDiskChart = this.$echarts.init(document.getElementById("disk"));
+        let myDiskChart = this.$echarts.init(document.getElementById("diskio"));
         // 指定图表的配置项和数据
         let option = {
           title: {

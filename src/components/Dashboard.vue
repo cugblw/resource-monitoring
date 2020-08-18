@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="dashboard">
     <!-- 第一列栅格布局 -->
     <el-row type="flex" class="row1">
       <el-col :span="8" class='col1'>
