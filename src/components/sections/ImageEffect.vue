@@ -42,38 +42,27 @@
 
   .fade-enter-active {
     transition: opacity 5s ease-in-out;
-    /* transition: scale 5s ease-in-out; */
   }
 
   .fade-enter-to {
     opacity: 1;
-    /* scale: 1; */
   }
 
   .fade-enter {
     opacity: 0;
-    /* scale: 0; */
   }
 
   @keyframes scaleDraw {
 
     /* 定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称 */
     0% {
-      transform: scale(0.25);
+      transform: scale(0);
       /*开始为原始大小*/
-    }
-
-    25% {
-      transform: scale(0.5);
-      /*放大1.1倍*/
-    }
-
-    50% {
-      transform: scale(0.75);
     }
 
     100% {
       transform: scale(1);
+      /*放大到100%*/
     }
   }
 

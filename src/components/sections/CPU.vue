@@ -5,15 +5,20 @@
 </template>
 
 <script>
+  import { getCpuData } from '../../monitoring-data'
+
   export default {
     name: "cpu",
-
-
     props: {
 
     },
 
-
+    data() {
+      return {
+        data: null,
+        cpu: null
+      };
+    },
     methods: {
       drawCPUChart() {
         // 基于准备好的dom，初始化echarts实例
@@ -45,7 +50,7 @@
               type: 'gauge',
               radius: '90%',
               detail: { formatter: '{value}%' },
-              data: [{ value: 10, name: '使用率', color: "azure" }],
+              data: [{ value: null, name: '使用率', color: "azure" }],
               title: {               //设置仪表盘中间显示文字样式
                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                   fontWeight: 'bolder',
@@ -61,6 +66,8 @@
         setInterval(function () {
           option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
           myCPUChart.setOption(option, true);
+          // option.series[0].data[0].value = this.cpu;
+          myCPUChart.setOption(option, true)
         }, 1000);
 
         // 使用指定的配置项和数据显示图表。
@@ -70,6 +77,7 @@
         })
       }
     },
+
     mounted() {
       this.drawCPUChart();
     }

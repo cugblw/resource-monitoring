@@ -56,7 +56,7 @@
       </el-col>
       <el-col :span="12" class='col3'>
         <request-data></request-data>
-        <image-fade-in></image-fade-in>
+        <!-- <image-fade-in></image-fade-in> -->
       </el-col>
     </el-row>
   </div>

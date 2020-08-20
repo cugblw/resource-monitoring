@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>This is NetworkIO part</p>
+    <!-- <i></i> -->
   </div>
 </template>
 

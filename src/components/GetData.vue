@@ -1,6 +1,6 @@
 <template>
   <div class="getdata-wrap">
-    <span>{{cpu}}</span>
+    <span>Total:{{cpu}}</span>
   </div>
 </template>
 
@@ -14,6 +14,7 @@
 <style scoped>
   .getdata-wrap {
     color: lightcoral;
+    margin: 50px;
     font-size: 40pt;
   }
 </style>

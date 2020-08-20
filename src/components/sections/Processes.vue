@@ -50,6 +50,7 @@
               },
               data: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
               axisLabel: {
+                rotate: -45,
                 textStyle: {
                   fontSize: 16, //字体大小
                   color: "white" //字体颜色
