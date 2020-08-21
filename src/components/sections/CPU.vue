@@ -50,7 +50,7 @@
               type: 'gauge',
               radius: '90%',
               detail: { formatter: '{value}%' },
-              data: [{ value: null, name: '使用率', color: "azure" }],
+              data: [{ value: 0, name: '使用率', color: "azure" }],
               title: {               //设置仪表盘中间显示文字样式
                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                   fontWeight: 'bolder',

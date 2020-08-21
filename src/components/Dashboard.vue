@@ -15,12 +15,7 @@
     <!-- 第二列布局 -->
     <el-row type="flex" class="row2">
       <el-col :span="6" class='col1'>
-        <span>网络I：</span>
-
-        <!-- <network-io></network-io> -->
-        <el-divider></el-divider>
-        <span>网络o：</span>
-
+        <network-io></network-io>
       </el-col>
       <el-col :span="6" class='col2'>
         <span>网络O：</span>
@@ -47,7 +42,6 @@
         </el-divider>
         <span>磁盘O：</span>
         <el-divider></el-divider>
-
         <stack-bar></stack-bar>
       </el-col>
       <el-col :span="5" class='col2'>
