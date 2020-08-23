@@ -37,11 +37,6 @@
     <!-- 第三列布局 -->
     <el-row type="flex" class="row3">
       <el-col :span="7" class='col1'>
-        <span>磁盘I：</span>
-        <el-divider direction="vertical">
-        </el-divider>
-        <span>磁盘O：</span>
-        <el-divider></el-divider>
         <stack-bar></stack-bar>
       </el-col>
       <el-col :span="5" class='col2'>

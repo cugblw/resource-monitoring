@@ -80,8 +80,8 @@
     background-color: #1e1e1e;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    height: 100%;
+    /* text-align: center; */
+    height: auto;
   }
 
   /* .el-main {

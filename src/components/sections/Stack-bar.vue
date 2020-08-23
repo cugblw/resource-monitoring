@@ -1,15 +1,38 @@
 <template>
     <div>
-        <div id="disk-stack" class></div>
+        <span>
+            <font-awesome-icon :icon="['fas', 'user-plus']"></font-awesome-icon>
+            <h5>磁盘0&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+            <h6>Input：{{this.diskInput1}} &nbsp;&nbsp; Output：{{this.diskOutput1}} </h6>
+        </span>
+        <el-divider></el-divider>
+        <span>
+            <font-awesome-icon style="float: left;" :icon="['fas', 'user-plus']"></font-awesome-icon>
+            <h5>磁盘1&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+            <h6>Input：{{this.diskInput2}} &nbsp;&nbsp; Output：{{this.diskOutput2}} </h6>
+        </span>
+        <div id="disk-stack">
+        </div>
     </div>
 </template>
 
 <script>
+    import { getDiskIO } from "../../monitoring-data";
+
     export default {
         name: "disk-stack",
+        data() {
+            return {
+                diskInput1: 0,
+                diskOutput1: 0,
+                diskInput2: 0,
+                diskOutput2: 0,
+            }
+        },
         methods: {
             drawStackChart() {
                 // 基于准备好的dom，初始化echarts实例
+                // document.getElementById("disk-stack").style.display = "block";
                 let myStackChart = this.$echarts.init(
                     document.getElementById("disk-stack")
                 );
@@ -17,6 +40,7 @@
                 let option = {
                     title: {
                         text: "磁盘使用情况",
+                        icon: "",
                         textStyle: {
                             fontSize: 20, // 字体大小
                             color: "white", // 字体颜色
@@ -42,7 +66,7 @@
                         type: 'category',
                         data: ['C:', 'D:', 'E:', 'F:'],
                         inverse: true,
-                        minInterval: 50,
+                        minInterval: 500,
                         axisLabel: {
                             textStyle: {
                                 fontSize: 16, //字体大小
@@ -94,14 +118,23 @@
                     ]
                 };
                 // 使用刚指定的配置项和数据显示图表。
-                myStackChart.setOption(option);
                 window.addEventListener("resize", () => {
                     myStackChart.resize();
                 })
+                myStackChart.setOption(option);
+
+            },
+            async getData() {
+                let data = await getDiskIO();
+                this.diskInput1 = data[0].write_bytes;
+                this.diskOutput1 = data[0].read_bytes;
+                this.diskInput2 = data[1].write_bytes;
+                this.diskOutput2 = data[1].read_bytes;
             }
         },
         mounted() {
             this.drawStackChart();
+            this.getData();
         }
     };
 </script>
@@ -110,5 +143,23 @@
     div {
         width: 100%;
         height: 100%;
+    }
+
+    span {
+        display: flex;
+        align-content: left;
+        text-align: left;
+        align-items: center;
+        align-items: left;
+        margin-left: 10px;
+        /* float: right */
+    }
+
+    .el-divider--horizontal {
+        margin: 10px;
+        background: 0;
+        width: auto;
+        height: 1px;
+        border-top: 1px dashed #e8eaec;
     }
 </style>

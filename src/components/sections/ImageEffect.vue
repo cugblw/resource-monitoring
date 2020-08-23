@@ -11,7 +11,7 @@
     data: function () {
       return {
         src:
-          "http://article.fd.zol-img.com.cn/g4/M03/0A/0B/Cg-4WVP5_SGIeXxnAF2crSIzFTAAAQyNAFTu5AAXZzF167.gif",
+          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598021963420&di=92a2da86fe9f8426b9095a320a374bcc&imgtype=0&src=http%3A%2F%2Fimg.soogif.com%2Fmini%2FsVuvozOb3ztjpvA4QcKiexgv5CPFdR5k.gif%3Fscope%3D96weixin",
         loaded: false
       };
     },

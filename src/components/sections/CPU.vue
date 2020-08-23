@@ -9,13 +9,8 @@
 
   export default {
     name: "cpu",
-    props: {
-
-    },
-
     data() {
       return {
-        data: null,
         cpu: null
       };
     },
@@ -48,7 +43,7 @@
             {
               name: 'CPU使用率',
               type: 'gauge',
-              radius: '90%',
+              radius: '80%',
               detail: { formatter: '{value}%' },
               data: [{ value: 0, name: '使用率', color: "azure" }],
               title: {               //设置仪表盘中间显示文字样式
@@ -75,11 +70,16 @@
         window.addEventListener("resize", () => {
           myCPUChart.resize();
         })
+      },
+      async getData() {
+        let data = await getCpuData();
+
       }
     },
 
     mounted() {
       this.drawCPUChart();
+      this.getData();
     }
   }
 </script>
