@@ -29,9 +29,7 @@
         <el-divider></el-divider>
       </el-col>
       <el-col :span="6" class='col4'>
-        <span>网络O：</span>
-
-        <el-divider></el-divider>
+        <system-info></system-info>
       </el-col>
     </el-row>
     <!-- 第三列布局 -->
@@ -60,6 +58,7 @@
   import Stack from "./sections/Stack-bar";
   import RequestData from "./RequestData";
   import ImageEffect from "./sections/ImageEffect"
+  import SystemInfo from "./sections/SystemInfo"
 
   export default {
     name: "dashboard",
@@ -71,9 +70,11 @@
       "disk-io": DiskIO,
       'stack-bar': Stack,
       'request-data': RequestData,
-      'image-fade-in': ImageEffect
+      'image-fade-in': ImageEffect,
+      'system-info': SystemInfo
     }
   }
+
 </script>
 
 <style scoped>
@@ -131,4 +132,5 @@
   span {
     color: azure;
   }
+
 </style>

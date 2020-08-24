@@ -13,34 +13,34 @@
   </div>
 </template>
 <script>
-  // const GetMonitoringData = require('../GetMonitoringData');
-  import { getCpuData } from "../monitoring-data";
-  import GetData from "./GetData";
+// const GetMonitoringData = require('../GetMonitoringData');
+import { getCpuData } from "../monitoring-data";
+import GetData from "./GetData";
 
-  export default {
-    name: "RequestData",
-    components: {
-      GetData
-    },
-    data() {
-      return {
-        data: null,
-        user: 0,
-        system: 0,
-        total: 0
-      };
-    },
-    async mounted() {
-      this.data = await getCpuData();
-      this.user = this.data.user;
-      this.total = this.data.total;
-      this.system = this.data.system;
-    }
-  };
+export default {
+  name: "RequestData",
+  components: {
+    GetData
+  },
+  data() {
+    return {
+      data: null,
+      user: 0,
+      system: 0,
+      total: 0
+    };
+  },
+  async mounted() {
+    this.data = await getCpuData();
+    this.user = this.data.user;
+    this.total = this.data.total;
+    this.system = this.data.system;
+  }
+};
 </script>
 
 <style>
-  div {
-    color: azure;
-  }
+div {
+  color: azure;
+}
 </style>
