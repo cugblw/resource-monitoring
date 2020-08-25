@@ -39,8 +39,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div {
-  color: azure;
+  color: hotpink;
 }
 </style>

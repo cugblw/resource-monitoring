@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div id="disk-stack"></div>
     <span>
       <font-awesome-icon :icon="['fas', 'user-plus']"></font-awesome-icon>
       <h5>磁盘 0&nbsp;&nbsp;&nbsp;&nbsp;</h5>
@@ -22,12 +23,12 @@
         }}
       </h6>
     </span>
-    <div id="disk-stack"></div>
   </div>
 </template>
 
 <script>
 import { getDiskIO } from "../../monitoring-data";
+import { getDiskInfo } from "../../monitoring-data";
 
 export default {
   name: "disk-stack",
@@ -49,7 +50,7 @@ export default {
       // 指定图表的配置项和数据
       let option = {
         title: {
-          text: "磁盘使用情况",
+          text: "磁盘 I/O",
           icon: "",
           textStyle: {
             fontSize: 20, // 字体大小
@@ -73,9 +74,10 @@ export default {
         },
         yAxis: {
           type: "category",
-          data: ["C:", "D:", "E:", "F:"],
+          // data: ["C:", "D:", "E:", "F:"],
+          data: null,
           inverse: true,
-          minInterval: 500,
+          minInterval: 50,
           axisLabel: {
             textStyle: {
               fontSize: 16, //字体大小
@@ -90,6 +92,9 @@ export default {
         grid: {
           left: "5%",
           top: "15%",
+          // width: "auto",
+          // height: "auto",
+          // bottom: "5%",
           containLabel: true
         },
         series: [
@@ -97,7 +102,8 @@ export default {
             name: "已使用",
             type: "bar",
             stack: "总大小",
-            data: [80, 200, 300, 200],
+            // data: [80, 200, 300, 200],
+            data: null,
             barWidth: 40,
             label: {
               show: true,
@@ -112,7 +118,8 @@ export default {
             name: "空闲",
             type: "bar",
             stack: "总大小",
-            data: [120, 300, 200, 200],
+            // data: [120, 300, 200, 200],
+            data: null,
             label: {
               show: true,
               position: "inside",
@@ -125,13 +132,32 @@ export default {
           }
         ]
       };
+
+      (async function() {
+        let data = await getDiskInfo();
+        let driveName = [];
+        let driveUsed = [];
+        let driveFree = [];
+
+        for (let i = 0; i < data.length; i++) {
+          driveName.push(data[i].device_name.replace("\\", ""));
+          driveFree.push((data[i].free / (1024 * 1024 * 1024)).toFixed(0));
+          driveUsed.push((data[i].used / (1024 * 1024 * 1024)).toFixed(0));
+        }
+
+        option.yAxis.data = driveName;
+        option.series[0].data = driveUsed;
+        option.series[1].data = driveFree;
+        myStackChart.setOption(option, true);
+      })();
+
       // 使用刚指定的配置项和数据显示图表。
       window.addEventListener("resize", () => {
         myStackChart.resize();
       });
-      myStackChart.setOption(option);
+      // myStackChart.setOption(option);
     },
-    async getData() {
+    async getDiskIOData() {
       let data = await getDiskIO();
       this.diskInput1 = (data[0].write_bytes / 1048576).toFixed(1);
       this.diskOutput1 = (data[0].read_bytes / 1048576).toFixed(1);
@@ -141,7 +167,7 @@ export default {
   },
   mounted() {
     this.drawStackChart();
-    setInterval(this.getData, 1000);
+    setInterval(this.getDiskIOData, 1000);
   },
   destroyed() {
     clearInterval(this.setInterval);
@@ -150,19 +176,37 @@ export default {
 </script>
 
 <style scoped>
+#disk-stack {
+  width: 100%;
+  height: 90%;
+  display: inline-flexbox;
+  margin: 0px 0px -40px 0px;
+}
 div {
   width: 100%;
   height: 100%;
+  /* padding: 0%; */
+  /* margin-bottom: -20px; */
+  /* display: inline; */
+  display: inline-flexbox;
+  /* overflow: auto; */
+  /* margin: 0px 0px -70px 0px; */
 }
 
 span {
   display: flex;
+  /* float: left; */
   align-content: left;
   text-align: left;
   align-items: center;
   align-items: left;
-  margin-left: 10px;
+  margin-left: 50px;
   /* float: right */
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .el-divider--horizontal {

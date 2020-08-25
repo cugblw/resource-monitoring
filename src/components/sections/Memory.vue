@@ -139,7 +139,7 @@ export default {
       }, 2000);
 
       // 使用指定的配置项和数据显示图表。
-      myMemoryChart.setOption(option);
+      // myMemoryChart.setOption(option);
       window.addEventListener("resize", () => {
         myMemoryChart.resize();
       });

@@ -163,7 +163,7 @@ export default {
       }, 1000);
 
       // 使用刚指定的配置项和数据显示图表。
-      myProcessChart.setOption(option);
+      // myProcessChart.setOption(option);
       window.addEventListener("resize", () => {
         myProcessChart.resize();
       });
@@ -181,6 +181,6 @@ export default {
 <style scoped>
 div {
   width: 100%;
-  height: 300px;
+  height: 350px;
 }
 </style>

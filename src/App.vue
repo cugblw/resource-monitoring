@@ -8,8 +8,13 @@
     <el-container>
       <!-- 侧边导航菜单 -->
       <el-aside width="200px">
-        <el-menu default-active="$route.path" class="el-menu-vertical-demo" :collapse="showMenu"
-          :default-openeds="defaultOpenedsArray" :default-active="activeUrl">
+        <el-menu
+          default-active="$route.path"
+          class="el-menu-vertical-demo"
+          :collapse="showMenu"
+          :default-openeds="defaultOpenedsArray"
+          :default-active="activeUrl"
+        >
           <el-menu-item index="1">
             <i class="el-icon-s-grid"></i>
             <span slot="title">仪表盘</span>
@@ -22,80 +27,85 @@
       </el-aside>
       <!-- 内容 -->
       <el-main>
-        <router-view>
-        </router-view>
+        <router-view> </router-view>
       </el-main>
     </el-container>
     <!-- 底栏 -->
-    <el-footer height="20px">Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer>
+    <el-footer height="20px"
+      >Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer
+    >
   </div>
 </template>
 
 <script>
-  import Dashboard from "./components/Dashboard"
-  export default {
-    name: 'App'
-  }
+import Dashboard from "./components/Dashboard";
+export default {
+  name: "App"
+};
 </script>
 
-<style>
-  .el-menu-item {
-    background-color: #252525;
-    font-size: large;
-    border: 5px;
-    color: azure;
-  }
+<style scoped>
+/* div{
+  color: azure;
+} */
 
-  .el-menu {
-    border: 0px;
-  }
+.el-menu-item {
+  background-color: #252525;
+  font-size: large;
+  border: 5px;
+  color: azure;
+}
 
-  .el-header {
-    background-color: #323232;
-    color: azure;
-    text-align: left;
-    line-height: 60px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-  }
+.el-menu {
+  border: 0px;
+}
 
-  .el-footer {
-    background-color: #324759;
-    color: azure;
-    flex: 1;
-    display: flex;
-    text-align: right;
-    align-items: center;
-    justify-content: center;
-    font-size: 5;
-  }
+.el-header {
+  background-color: #323232;
+  color: azure;
+  text-align: left;
+  line-height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 
-  .el-aside {
-    background-color: #252525;
-    margin: 0;
-  }
+.el-footer {
+  background-color: #324759;
+  color: azure;
+  flex: 1;
+  display: flex;
+  text-align: right;
+  align-items: center;
+  justify-content: center;
+  font-size: 5;
+}
 
-  .el-main {
-    background-color: #1e1e1e;
-    display: flex;
-    flex-direction: column;
-    /* text-align: center; */
-    height: auto;
-  }
+.el-aside {
+  background-color: #252525;
+  margin: 0;
+}
 
-  /* .el-main {
+.el-main {
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  height: auto;
+}
+
+/* .el-main {
       background-color: #1e1e1e;
       color: #333;
       line-height: 30vh
     } */
 
-  html,
-  body,
-  #app,
-  .el-container {
-    padding: 0px;
-    margin: 0px;
-    height: 100%;
-  }
+html,
+body,
+#app,
+.el-container {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
 </style>
