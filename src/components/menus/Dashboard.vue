@@ -46,16 +46,16 @@
 </template>
 
 <script>
-import CPU from "./sections/CPU";
-import NetworkIO from "./sections/NetworkIO";
-import DiskIO from "./sections/DiskIO";
-import Memory from "./sections/Memory";
-import Processes from "./sections/Processes";
-import Stack from "./sections/Stack-bar";
-import RequestData from "./RequestData";
-import ImageEffect from "./sections/ImageEffect";
-import SystemInfo from "./sections/SystemInfo";
-import Table from "./sections/TableTest";
+import CPU from "../sections/CPU";
+import NetworkIO from "../sections/NetworkIO";
+import DiskIO from "../sections/DiskIO";
+import Memory from "../sections/Memory";
+import Processes from "../sections/Processes";
+import Stack from "../sections/Stack-bar";
+import RequestData from "../RequestData";
+import ImageEffect from "../sections/ImageEffect";
+import SystemInfo from "../sections/SystemInfo";
+import Table from "../sections/TableTest";
 
 export default {
   name: "dashboard",

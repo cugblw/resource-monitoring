@@ -8,15 +8,30 @@
     <el-container>
       <!-- 侧边导航菜单 -->
       <el-aside width="230px">
-        <el-menu default-active="$route.path" class="el-menu-vertical-demo" :collapse="showMenu"
-          :default-openeds="defaultOpenedsArray" :default-active="activeUrl">
-          <el-menu-item index="1">
-            <i class="el-icon-s-grid"></i>
-            <span slot="title">仪表盘</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <i class="el-icon-info"></i>
-            <span slot="title">其它</span>
+        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+          <el-radio-button :label="false">展开</el-radio-button>
+          <el-radio-button :label="true">收起</el-radio-button>
+        </el-radio-group>
+        <el-menu
+          :default-active="this.$route.path"
+          router
+          mode="horizontal"
+          class="el-menu-vertical-demo"
+          @open="handleOpen"
+          @close="handleClose"
+          background-color="#252525"
+          active-text-color="#ffd04b"
+          :collapse="isCollapse"
+        >
+          <el-menu-item
+            v-for="(item, i) in navList"
+            :key="i"
+            :index="item.name"
+          >
+            <template slot="title">
+              <i class="el-icon-s-platform"></i>
+              <span> {{ item.navItem }}</span>
+            </template>
           </el-menu-item>
         </el-menu>
       </el-aside>
@@ -26,79 +41,90 @@
       </el-main>
     </el-container>
     <!-- 底栏 -->
-    <el-footer height="20px">Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer>
+    <el-footer height="30px"
+      >Copyright &copy; 2020 @ Weil Lee. All rights reserved.</el-footer
+    >
   </div>
 </template>
 
 <script>
-  import Dashboard from "./components/Dashboard";
-  export default {
-    name: "App"
-  };
+// import Dashboard from "./components/menus/Dashboard";
+export default {
+  name: "App",
+  data() {
+    return {
+      navList: [
+        { name: "/src/components/menus/Dashboard.vue", navItem: "Dashboard" },
+        { name: "/src/components/menus/NavItem1.vue", navItem: "导航一" },
+        { name: "/src/components/menus/NavItem2.vue", navItem: "导航二" },
+        { name: "/src/components/menus/Other.vue", navItem: "其他信息" },
+      ],
+      isCollapse: true,
+    };
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+  },
+};
 </script>
 
-<style scoped>
-  /* div{
+<style>
+/* div{
   color: azure;
 } */
 
-  .el-menu-item {
-    background-color: #252525;
-    font-size: large;
-    border: 5px;
-    color: azure;
-  }
+.el-menu-item {
+  background-color: #252525;
+  font-size: medium;
+  /* border: 5px; */
+  color: azure;
+}
 
-  .el-menu {
-    border: 0px;
-  }
+.el-header {
+  background-color: #323232;
+  color: azure;
+  text-align: left;
+  line-height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 
-  .el-header {
-    background-color: #323232;
-    color: azure;
-    text-align: left;
-    line-height: 60px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-  }
+.el-aside {
+  background-color: #252525;
+  margin: 0;
+  border: #252525;
+  /* height: 100%; */
+}
 
-  .el-footer {
-    background-color: #324759;
-    color: azure;
-    flex: 1;
-    display: flex;
-    text-align: right;
-    align-items: center;
-    justify-content: center;
-    font-size: 5;
-  }
+.el-main {
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  height: auto;
+}
 
-  .el-aside {
-    background-color: #252525;
-    margin: 0;
-  }
+.el-footer {
+  background-color: #324759;
+  color: azure;
+  /* flex: 1; */
+  display: flex;
+  text-align: right;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 5; */
+}
 
-  .el-main {
-    background-color: #1e1e1e;
-    display: flex;
-    flex-direction: column;
-    /* text-align: center; */
-    height: auto;
-  }
-
-  /* .el-main {
-      background-color: #1e1e1e;
-      color: #333;
-      line-height: 30vh
-    } */
-
-  html,
-  body,
-  #app,
-  .el-container {
-    padding: 0px;
-    margin: 0px;
-    height: 100%;
-  }
+html,
+body,
+#app,
+.el-container {
+  height: 100%;
+}
 </style>
