@@ -39,7 +39,6 @@
       </el-col>
       <el-col :span="12" class="col3">
         <request-data></request-data>
-        <!-- <image-fade-in></image-fade-in> -->
       </el-col>
     </el-row>
   </div>
@@ -53,7 +52,6 @@ import Memory from "../sections/Memory";
 import Processes from "../sections/Processes";
 import Stack from "../sections/Stack-bar";
 import RequestData from "../RequestData";
-import ImageEffect from "../sections/ImageEffect";
 import SystemInfo from "../sections/SystemInfo";
 import Table from "../sections/TableTest";
 
@@ -67,7 +65,6 @@ export default {
     "disk-io": DiskIO,
     "stack-bar": Stack,
     "request-data": RequestData,
-    "image-fade-in": ImageEffect,
     "system-info": SystemInfo,
     "table-test": Table
   }

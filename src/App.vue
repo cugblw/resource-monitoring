@@ -13,31 +13,50 @@
           <el-radio-button :label="true">收起</el-radio-button>
         </el-radio-group>
         <el-menu
-          :default-active="this.$route.path"
+          unique-opened
           router
-          mode="horizontal"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
-          background-color="#252525"
-          active-text-color="#ffd04b"
-          :collapse="isCollapse"
+          :default-active="$route.path"
+          class="left-menu"
+          :collapse="leftMenu.isCollapse"
         >
-          <el-menu-item
-            v-for="(item, i) in navList"
-            :key="i"
-            :index="item.name"
+          <component
+            class="menu-item"
+            v-for="value in leftMenu.navList"
+            :key="value.title + value.url"
+            :index="value.url"
+            :is="
+              value.children && value.children.length > 0
+                ? 'el-submenu'
+                : 'el-menu-item'
+            "
           >
             <template slot="title">
-              <i class="el-icon-s-platform"></i>
-              <span> {{ item.navItem }}</span>
+              <i :class="[value.icon]"></i>
+              <span>{{ value.title }}</span>
             </template>
-          </el-menu-item>
+            <template v-if="value.children && value.children.length > 0">
+              <el-menu-item
+                class="menu-item"
+                v-for="(v, i) in value.children"
+                :key="v.url + i"
+                :index="v.url"
+              >
+                <i :class="[v.icon]"></i>
+                <span slot="title">{{ v.title }}</span>
+              </el-menu-item>
+            </template>
+          </component>
         </el-menu>
       </el-aside>
       <!-- 内容 -->
+
       <el-main>
-        <router-view> </router-view>
+        <div class="topbar-container">
+          <div class="toggle-btn" @click="toggleSidebar">
+            <i class="fa fa-navicon"></i>
+          </div>
+          <router-view> </router-view>
+        </div>
       </el-main>
     </el-container>
     <!-- 底栏 -->
@@ -48,28 +67,59 @@
 </template>
 
 <script>
-// import Dashboard from "./components/menus/Dashboard";
 export default {
   name: "App",
   data() {
     return {
-      navList: [
-        { name: "/src/components/menus/Dashboard.vue", navItem: "Dashboard" },
-        { name: "/src/components/menus/NavItem1.vue", navItem: "导航一" },
-        { name: "/src/components/menus/NavItem2.vue", navItem: "导航二" },
-        { name: "/src/components/menus/Other.vue", navItem: "其他信息" },
-      ],
-      isCollapse: true,
+      leftMenu: {
+        isCollapse: false,
+        navList: [
+          {
+            icon: "el-icon-s-grid",
+            title: "Dashboard",
+            url: "/src/components/menus/Dashboard.vue"
+          },
+          {
+            icon: "el-icon-s-order",
+            title: "导航一",
+            url: "/src/components/menus/NavItem1.vue"
+          },
+          {
+            icon: "el-icon-s-opportunity",
+            title: "导航二",
+            url: "/src/components/menus/NavItem2.vue"
+          },
+          {
+            icon: "el-icon-s-help",
+            title: "导航三",
+            // url: "/src/components/menus/NavItem3.vue",
+            children: [
+              {
+                icon: "el-icon-s-data",
+                title: "子菜单一",
+                url: "/src/components/menus/ImageEffect.vue"
+              },
+              {
+                icon: "el-icon-s-data",
+                title: "子菜单二",
+                url: "/"
+              },
+              {
+                icon: "el-icon-loading",
+                title: "子菜单三",
+                url: "/"
+              }
+            ]
+          },
+          {
+            icon: "el-icon-info",
+            title: "其他信息",
+            url: "/src/components/menus/Other.vue"
+          }
+        ]
+      }
     };
-  },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
-  },
+  }
 };
 </script>
 
@@ -77,6 +127,10 @@ export default {
 /* div{
   color: azure;
 } */
+
+.el-menu {
+  border-right: 0;
+}
 
 .el-menu-item {
   background-color: #252525;
@@ -119,6 +173,10 @@ export default {
   align-items: center;
   justify-content: center;
   /* font-size: 5; */
+}
+
+:focus {
+  outline: 0;
 }
 
 html,

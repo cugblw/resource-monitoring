@@ -1,6 +1,6 @@
 <template>
-  <div class="other">
-    Just waiting for Other menu page ...
+  <div class="navitem3">
+    Just waiting for NavItem3 menu page ...
   </div>
 </template>
 

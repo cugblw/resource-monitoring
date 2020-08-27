@@ -5,4 +5,10 @@
 </template>
 
 <script></script>
-<style scoped></style>
+<style scoped>
+div {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+</style>
