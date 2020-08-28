@@ -8,10 +8,6 @@
     <el-container>
       <!-- 侧边导航菜单 -->
       <el-aside width="230px">
-        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-          <el-radio-button :label="false">展开</el-radio-button>
-          <el-radio-button :label="true">收起</el-radio-button>
-        </el-radio-group>
         <el-menu
           unique-opened
           router
@@ -52,10 +48,15 @@
 
       <el-main>
         <div class="topbar-container">
-          <div class="toggle-btn" @click="toggleSidebar">
-            <i class="fa fa-navicon"></i>
+          <div class="navbar">
+            <hamburger
+              class="hamburger-container"
+              @toggleClick="toggleSideBar"
+            />
           </div>
-          <router-view> </router-view>
+          <div>
+            <router-view> </router-view>
+          </div>
         </div>
       </el-main>
     </el-container>
@@ -67,6 +68,7 @@
 </template>
 
 <script>
+import Hamburger from "./components/Hamburger";
 export default {
   name: "App",
   data() {
@@ -119,6 +121,12 @@ export default {
         ]
       }
     };
+  },
+  components: { Hamburger },
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch("app/toggleSideBar");
+    }
   }
 };
 </script>
@@ -175,8 +183,21 @@ export default {
   /* font-size: 5; */
 }
 
-:focus {
-  outline: 0;
+.navbar {
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+
+.hamburger-container {
+  line-height: 46px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,

@@ -22,10 +22,6 @@ Vue.prototype.$echarts = echarts;
 library.add(fab, fas, far);
 
 Vue.config.productionTip = false;
-
-// axios.defaults.baseURL = "http://10.190.44.49:61208";
-// axios.defaults.headers.post["Content-Type"] = "application/json";
-
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 // Vue.config.productionTip = false;
 
