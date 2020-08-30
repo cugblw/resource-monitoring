@@ -13,7 +13,6 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import "./assets/css/common.css";
-
 // import "./assets/css/fontawesome.css";
 
 Vue.use(ElementUI);

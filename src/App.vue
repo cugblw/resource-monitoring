@@ -7,33 +7,33 @@
     <!-- 嵌套容器 -->
     <el-container>
       <!-- 侧边导航菜单 -->
-      <el-aside width="230px">
+      <el-aside :width="leftMenu.isCollapse ? '64px' : '230px'">
         <el-menu
+          v-for="(item, index) in leftMenu.navList"
+          :key="index"
           unique-opened
           router
           :default-active="$route.path"
-          class="left-menu"
           :collapse="leftMenu.isCollapse"
+          :collapse-transition="false"
         >
           <component
             class="menu-item"
-            v-for="value in leftMenu.navList"
-            :key="value.title + value.url"
-            :index="value.url"
             :is="
-              value.children && value.children.length > 0
+              item.children && item.children.length > 0
                 ? 'el-submenu'
                 : 'el-menu-item'
             "
+            :index="item.url"
           >
             <template slot="title">
-              <i :class="[value.icon]"></i>
-              <span>{{ value.title }}</span>
+              <i :class="[item.icon]"></i>
+              <span>{{ item.title }}</span>
             </template>
-            <template v-if="value.children && value.children.length > 0">
+            <template v-if="item.children && item.children.length > 0">
               <el-menu-item
                 class="menu-item"
-                v-for="(v, i) in value.children"
+                v-for="(v, i) in item.children"
                 :key="v.url + i"
                 :index="v.url"
               >
@@ -48,11 +48,13 @@
 
       <el-main>
         <div class="topbar-container">
-          <div class="navbar">
-            <hamburger
-              class="hamburger-container"
-              @toggleClick="toggleSideBar"
-            />
+          <div class="toggle-button">
+            <i
+              :class="
+                leftMenu.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'
+              "
+              @click="toggleCollapse"
+            ></i>
           </div>
           <div>
             <router-view> </router-view>
@@ -68,7 +70,6 @@
 </template>
 
 <script>
-import Hamburger from "./components/Hamburger";
 export default {
   name: "App",
   data() {
@@ -122,12 +123,18 @@ export default {
       }
     };
   },
-  components: { Hamburger },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch("app/toggleSideBar");
+    toggleCollapse() {
+      return (this.leftMenu.isCollapse = !this.leftMenu.isCollapse);
+      console.log(this.leftMenu.isCollapse);
     }
   }
+  // components: { Hamburger },
+  // methods: {
+  //   toggleSideBar() {
+  //     this.$store.dispatch("app/toggleSideBar");
+  //   }
+  // }
 };
 </script>
 
@@ -138,12 +145,18 @@ export default {
 
 .el-menu {
   border-right: 0;
+  color: azure;
+  background-color: #252525;
 }
 
 .el-menu-item {
-  background-color: #252525;
   font-size: medium;
   /* border: 5px; */
+  color: azure;
+  background-color: #252525;
+}
+
+.el-submenu__title {
   color: azure;
 }
 
@@ -160,7 +173,8 @@ export default {
 .el-aside {
   background-color: #252525;
   margin: 0;
-  border: #252525;
+  color: azure;
+  /* border: #252525; */
   /* height: 100%; */
 }
 
@@ -183,21 +197,21 @@ export default {
   /* font-size: 5; */
 }
 
-.navbar {
-  height: 50px;
-  overflow: hidden;
-  position: relative;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+.toggle-button {
+  background: rgb(236, 9, 115);
+  line-height: 24px;
+  color: azure;
+  cursor: pointer;
 }
 
-.hamburger-container {
-  line-height: 46px;
-  height: 100%;
-  float: left;
-  cursor: pointer;
-  transition: background 0.3s;
-  -webkit-tap-highlight-color: transparent;
+/*隐藏文字*/
+.el-menu--collapse.el-menu-item {
+  display: none;
+}
+
+/*隐藏 > */
+.el-menu--collapse .el-submenu__title .el-submenu__icon-arrow {
+  display: none;
 }
 
 html,
